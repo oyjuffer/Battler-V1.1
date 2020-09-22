@@ -3,7 +3,7 @@
 ### CONSTANTS ###
 
 #IMPORT LIBRARIES 
-None
+import pygame
 
 # IMPORT GAME FILES
 None
@@ -28,7 +28,7 @@ PURPLE 	= (255, 0, 255)
 SNOW 	= (255, 250, 250)
 
 #FONTS
-FONT = "arial"
+FONT = pygame.font.match_font("arial")
 
 #OVERHEAD GAMESTATES
 MAIN_MENU 	= "main menu"
