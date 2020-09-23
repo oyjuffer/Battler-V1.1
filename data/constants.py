@@ -27,14 +27,20 @@ PURPLE 	= (255, 0, 255)
 
 SNOW 	= (255, 250, 250)
 
-#FONTS
+# FONTS
 FONT = pygame.font.match_font("arial")
 
-#OVERHEAD GAMESTATES
+# OVERHEAD GAMESTATES
 MAIN_MENU 	= "main menu"
 GAME_SETUP 	= "game setup"
 GAME 		= "game"
 COMPENDIUM 	= "compendium"
+
+# MAIN MENU STATES
+START_GAME 	= "start game"
+COMPENDIUM 	= "compendium"
+SETTINGS 	= "settings"
+EXIT 		= "exit"
 
 
 print("constants.py RUN")
