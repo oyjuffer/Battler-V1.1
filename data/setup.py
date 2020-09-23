@@ -3,7 +3,7 @@
 ### SETUP ###
 
 # IMPORT LIBRARIES 
-from os import path
+import os
 import pygame
 
 # IMPORT GAME FILES
@@ -15,9 +15,10 @@ pygame.init()
 pygame.display.set_caption(constants.CAPTION)
 SCREEN = pygame.display.set_mode(constants.SCREEN_SIZE)
 
-# graphics_dir = path.join(path.dirname(__file__), ("resources\graphics"))
-# arrow = pygame.image.load(path.join(graphics_dir, "menu_arrow"))
-# arrow_rect = arrow.get_rect()
+graphics_dir = os.path.join("resources","graphics")
+arrow = pygame.image.load(os.path.join(graphics_dir, "menu_arrow.png"))
+arrow_rect = arrow.get_rect()
+
 
 
 print("setup.py RUN")
