@@ -10,7 +10,7 @@ import pygame
 from . import constants
 from . import control
 from . import setup
-from .states import main_menu
+from .states import main_menu, game_setup
 
 # CLASSES
 
@@ -22,7 +22,8 @@ def main():
 	This can be found in control.py. 
 	"""
 	game = control.Control()
-	state_dict = {constants.MAIN_MENU: main_menu.Main_Menu()}
+	state_dict = {constants.MAIN_MENU: main_menu.Main_Menu(), 
+	              constants.GAME_SETUP: game_setup.Game_Setup()}
 	
 	game.setup_states(state_dict, constants.MAIN_MENU)
 	game.mainloop()
