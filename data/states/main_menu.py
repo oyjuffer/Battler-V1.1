@@ -4,7 +4,6 @@
 
 # IMPORT LIBRARIES
 import os 
-from os import path
 import pygame
 
 # IMPORT GAME FILES
@@ -15,17 +14,37 @@ from .. import setup
 
 class Main_Menu():
 	def __init__(self):
-		self.running = False
-
+		self.running 		= False
+		self.state 			= None
+		self.menu_location	= 1
+		
 	def setup(self):
-		self.menu_location = [1, 1]
+		self.menu_location = 1
 	
-	def events(self):
+	def events(self, keystate):
+		self.keystate = keystate
+		if self.keystate[pygame.K_UP]:
+			print("KEYSTATE: UP")
+			if self.menu_location == 1:
+				print("PASSING")
+				pass
+			else:
+				self.menu_location -= 1
+
+		if self.keystate[pygame.K_DOWN]:
+			print("KEYSTATE: DOWN")
+			if self.menu_location == 4:
+				print("PASSING")
+				pass
+			else:
+				self.menu_location += 1			
+		
+		print("MENU LOCATION: " + str(self.menu_location))
+
+	
+	def update(self, keystate):
 		pass
-	
-	def update(self, key):
-		pass
-	
+
 	def draw(self):
 		control.draw_text("BATTLER V1.1", 64, constants.BLACK, setup.SCREEN, "center", 250, 50)
 
@@ -34,10 +53,17 @@ class Main_Menu():
 		control.draw_text("SETTINGS", 32, constants.BLACK, setup.SCREEN, "center", 250, 300)
 		control.draw_text("EXIT", 32, constants.BLACK, setup.SCREEN, "center", 250, 350)
 
-		pygame.draw.polygon(setup.SCREEN, constants.BLACK, [[50, 50], [60, 50], [50, 55]])
+		self.draw_menu_location()
 
+	def draw_menu_location(self):
+		if self.menu_location == 1:
+			pygame.draw.rect(setup.SCREEN, constants.BLACK, (125, 195, 10, 10))
 
+		if self.menu_location == 2:
+			pygame.draw.rect(setup.SCREEN, constants.BLACK, (125, 245, 10, 10))
 
-	def running(self):
-		pass
+		if self.menu_location == 3:
+			pygame.draw.rect(setup.SCREEN, constants.BLACK, (150, 295, 10, 10))
 
+		if self.menu_location == 4:
+			pygame.draw.rect(setup.SCREEN, constants.BLACK, (150, 345, 10, 10))
