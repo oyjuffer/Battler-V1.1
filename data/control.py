@@ -18,7 +18,7 @@ class Control():
 		self.clock 		= pygame.time.Clock()
 		self.fps		= 60
 
-		self.key 		= pygame.key.get_pressed()
+		self.keystate 	= pygame.key.get_pressed()
 
 		self.state_dict = {}
 		self.state_name = None
@@ -30,15 +30,19 @@ class Control():
 		self.state_name 	= start_state
 		self.state = self.state_dict[self.state_name]
 
+	def change_states(self):
+		pass
+
 	def eventloop(self):
 		for event in pygame.event.get():
 			if event.type == pygame.QUIT:
 				self.running = False
 			if event.type == pygame.KEYDOWN:
-				self.key = pygame.key.get_pressed()
+				self.keystate = pygame.key.get_pressed()
+				self.state.events(self.keystate)
 
 	def updateloop(self):
-		self.state.update(self.key)
+		pass
 
 	def drawloop(self):
 		draw_backdrop()
@@ -72,9 +76,6 @@ def draw_text(text, size, colour, surface, attribute, x, y):
 	if attribute == "center":
 		text_rect.center = (x, y)
 	surface.blit(text_surface, text_rect)
-
-
-
 
 
 
