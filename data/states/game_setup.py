@@ -21,7 +21,7 @@ class Game_Setup():
 	def setup(self):
 		pass
 
-	def events(self):
+	def events(self, keystate):
 		pass
 
 	def update(self):
