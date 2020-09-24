@@ -18,6 +18,17 @@ class Main_Menu():
 		self.state 			= None
 		self.menu_location	= 1
 		
+
+
+		self.state_dict 	= {1:constants.START_GAME,
+		                       2:constants.COMPENDIUM,
+		                       3:constants.SETTINGS,
+		                       4:constants.EXIT} 
+
+		self.state = self.state_dict[1]
+		self.state_change 	= False
+		self.next_state 	= None
+		
 	def setup(self):
 		self.menu_location = 1
 	
@@ -30,6 +41,7 @@ class Main_Menu():
 				pass
 			else:
 				self.menu_location -= 1
+			print("MENU LOCATION: " + str(self.menu_location))
 
 		if self.keystate[pygame.K_DOWN]:
 			print("KEYSTATE: DOWN")
@@ -38,12 +50,17 @@ class Main_Menu():
 				pass
 			else:
 				self.menu_location += 1			
-		
-		print("MENU LOCATION: " + str(self.menu_location))
+			print("MENU LOCATION: " + str(self.menu_location))
+
+
+		if self.keystate[pygame.K_RETURN]:
+			print("KEYSTATE: RETURN")
+			self.state_change = True
 
 	
-	def update(self, keystate):
-		pass
+	def update(self):
+		if self.state_change == True:
+			return self.state
 
 	def draw(self):
 		control.draw_text("BATTLER V1.1", 64, constants.BLACK, setup.SCREEN, "center", 250, 50)
@@ -58,12 +75,17 @@ class Main_Menu():
 	def draw_menu_location(self):
 		if self.menu_location == 1:
 			pygame.draw.rect(setup.SCREEN, constants.BLACK, (125, 195, 10, 10))
-
+			self.state = self.state_dict[1]
+			
 		if self.menu_location == 2:
 			pygame.draw.rect(setup.SCREEN, constants.BLACK, (125, 245, 10, 10))
-
+			self.state = self.state_dict[2]
+			
 		if self.menu_location == 3:
 			pygame.draw.rect(setup.SCREEN, constants.BLACK, (150, 295, 10, 10))
-
+			self.state = self.state_dict[3]
+			
 		if self.menu_location == 4:
 			pygame.draw.rect(setup.SCREEN, constants.BLACK, (150, 345, 10, 10))
+			self.state = self.state_dict[4]
+			
