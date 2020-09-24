@@ -32,15 +32,16 @@ FONT = pygame.font.match_font("arial")
 
 # OVERHEAD GAMESTATES
 MAIN_MENU 	= "main menu"
+COMPENDIUM 	= "compendium"
 GAME_SETUP 	= "game setup"
 GAME 		= "game"
-COMPENDIUM 	= "compendium"
 
 # MAIN MENU STATES
-START_GAME 	= "start game"
+START_GAME 	= "game setup"
 COMPENDIUM 	= "compendium"
 SETTINGS 	= "settings"
 EXIT 		= "exit"
 
+# GAME SETUP STATES
 
 print("constants.py RUN")
