@@ -30,8 +30,8 @@ class Control():
 		self.state_name 	= start_state
 		self.state = self.state_dict[self.state_name]
 
-	def change_states(self):
-		pass
+	def change_states(self, next_state):
+		self.state = self.state_dict[next_state]
 
 	def eventloop(self):
 		for event in pygame.event.get():
@@ -42,7 +42,13 @@ class Control():
 				self.state.events(self.keystate)
 
 	def updateloop(self):
-		pass
+		update = self.state.update()
+		if not update == None:
+			print("UPDATING STATE TO: " + str(update))
+			if update == "exit":
+				self.running = False
+			else:
+				self.change_states(update)
 
 	def drawloop(self):
 		draw_backdrop()
